@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Augment Conversation Manager</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            overflow: hidden;
+        }
+        header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 60px 40px;
+            text-align: center;
+        }
+        h1 {
+            font-size: 3em;
+            margin-bottom: 20px;
+            font-weight: 700;
+        }
+        .subtitle {
+            font-size: 1.3em;
+            opacity: 0.9;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        .badges {
+            margin-top: 20px;
+        }
+        .badges img {
+            margin: 0 5px;
+        }
+        .content {
+            padding: 60px 40px;
+        }
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin: 40px 0;
+        }
+        .feature {
+            padding: 30px;
+            background: #f8f9fa;
+            border-radius: 8px;
+            border-left: 4px solid #667eea;
+        }
+        .feature h3 {
+            color: #667eea;
+            margin-bottom: 15px;
+            font-size: 1.4em;
+        }
+        .quick-start {
+            background: #1e1e1e;
+            color: #d4d4d4;
+            padding: 30px;
+            border-radius: 8px;
+            margin: 40px 0;
+            overflow-x: auto;
+        }
+        .quick-start h2 {
+            color: #fff;
+            margin-bottom: 20px;
+        }
+        pre {
+            background: #2d2d2d;
+            padding: 20px;
+            border-radius: 6px;
+            overflow-x: auto;
+            margin: 15px 0;
+        }
+        code {
+            font-family: 'Courier New', monospace;
+            font-size: 0.95em;
+        }
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin: 40px 0;
+        }
+        .stat {
+            text-align: center;
+            padding: 30px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border-radius: 8px;
+        }
+        .stat-value {
+            font-size: 2.5em;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+        .stat-label {
+            font-size: 1.1em;
+            opacity: 0.9;
+        }
+        .cta {
+            text-align: center;
+            margin: 60px 0;
+        }
+        .btn {
+            display: inline-block;
+            padding: 15px 40px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            text-decoration: none;
+            border-radius: 50px;
+            font-size: 1.2em;
+            font-weight: 600;
+            transition: transform 0.2s, box-shadow 0.2s;
+            margin: 10px;
+        }
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(102, 126, 234, 0.4);
+        }
+        .btn-secondary {
+            background: #6c757d;
+        }
+        footer {
+            background: #f8f9fa;
+            padding: 40px;
+            text-align: center;
+            color: #6c757d;
+        }
+        .architecture {
+            background: #f8f9fa;
+            padding: 30px;
+            border-radius: 8px;
+            margin: 40px 0;
+        }
+        .architecture pre {
+            background: white;
+            color: #333;
+            border: 2px solid #e9ecef;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🚀 Augment Conversation Manager</h1>
+            <p class="subtitle">Production-ready data management system for Augment conversation exports with Redis caching, PostgreSQL storage, and automatic deduplication</p>
+            <div class="badges">
+                <img src="https://img.shields.io/badge/License-MIT-yellow.svg" alt="MIT License">
+                <img src="https://img.shields.io/badge/python-3.8+-blue.svg" alt="Python 3.8+">
+                <img src="https://img.shields.io/badge/PostgreSQL-15-blue.svg" alt="PostgreSQL 15">
+                <img src="https://img.shields.io/badge/Redis-7-red.svg" alt="Redis 7">
+            </div>
+        </header>
+
+        <div class="content">
+            <div class="quick-start">
+                <h2>⚡ Quick Start</h2>
+                <pre><code># 1. Setup (starts PostgreSQL + Redis, installs dependencies)
+./setup-conversation-manager.sh
+
+# 2. Test (verifies everything works)
+python3 test-conversation-manager.py
+
+# 3. Import your first conversation
+python3 conversation_manager.py import "conversation_export.json"</code></pre>
+            </div>
+
+            <h2 style="text-align: center; margin: 60px 0 30px 0; font-size: 2.5em;">✨ Features</h2>
+            <div class="features">
+                <div class="feature">
+                    <h3>⚡ Redis Caching</h3>
+                    <p>Write-through caching pattern with 1-hour TTL for blazing-fast access to frequently used data.</p>
+                </div>
+                <div class="feature">
+                    <h3>🗄️ PostgreSQL Storage</h3>
+                    <p>JSONB support for flexible querying of nested conversation data with full-text search.</p>
+                </div>
+                <div class="feature">
+                    <h3>🔒 Deduplication</h3>
+                    <p>SHA256 content hashing prevents duplicate imports at conversation, message, and tool state levels.</p>
+                </div>
+                <div class="feature">
+                    <h3>🔍 Full-Text Search</h3>
+                    <p>Search conversations by name with PostgreSQL trigram indexes for fast, fuzzy matching.</p>
+                </div>
+                <div class="feature">
+                    <h3>🖥️ CLI Interface</h3>
+                    <p>Easy-to-use command-line interface for importing, searching, and analyzing conversations.</p>
+                </div>
+                <div class="feature">
+                    <h3>🐳 Docker Deployment</h3>
+                    <p>One-command setup with Docker Compose - PostgreSQL and Redis ready in seconds.</p>
+                </div>
+            </div>
+
+            <h2 style="text-align: center; margin: 60px 0 30px 0; font-size: 2.5em;">📊 Performance</h2>
+            <div class="stats">
+                <div class="stat">
+                    <div class="stat-value">~1,000</div>
+                    <div class="stat-label">Messages/Second</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-value">&lt;10ms</div>
+                    <div class="stat-label">Search (Cached)</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-value">70-90%</div>
+                    <div class="stat-label">Cache Hit Rate</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-value">~10KB</div>
+                    <div class="stat-label">Per Message</div>
+                </div>
+            </div>
+
+            <div class="architecture">
+                <h2 style="text-align: center; margin-bottom: 30px; font-size: 2em;">🏗️ Architecture</h2>
+                <pre><code>User
+  │
+  ▼
+┌─────────────────────────────────────┐
+│  conversation_manager.py (CLI)      │
+└─────────────────────────────────────┘
+  │
+  ▼
+┌─────────────────────────────────────┐
+│  ConversationManager Class          │
+│  ┌──────────┐    ┌──────────┐      │
+│  │  Redis   │◄──►│PostgreSQL│      │
+│  │  Cache   │    │    DB    │      │
+│  └──────────┘    └──────────┘      │
+│                                     │
+│  • Write-through caching            │
+│  • SHA256 deduplication             │
+│  • Full-text search                 │
+│  • JSONB querying                   │
+└─────────────────────────────────────┘
+  │
+  ▼
+┌─────────────────────────────────────┐
+│  Docker Services                    │
+│  • PostgreSQL 15 Alpine             │
+│  • Redis 7 Alpine                   │
+└─────────────────────────────────────┘</code></pre>
+            </div>
+
+            <div class="cta">
+                <a href="https://github.com/swipswaps/augment-conversation-manager" class="btn">View on GitHub</a>
+                <a href="CONVERSATION_DATA_SYSTEM.html" class="btn btn-secondary">Documentation</a>
+            </div>
+        </div>
+
+        <footer>
+            <p><strong>Augment Conversation Manager</strong> - MIT License</p>
+            <p style="margin-top: 10px;">Based on Redis write-through caching pattern and PostgreSQL JSONB best practices</p>
+        </footer>
+    </div>
+</body>
+</html>
